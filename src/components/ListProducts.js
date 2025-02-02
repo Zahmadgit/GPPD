@@ -4,6 +4,7 @@ import { View, Text, FlatList, StyleSheet } from 'react-native';
 const ListProducts = ({ data }) => {
     const renderItem = ({ item }) => (
         <View style={styles.itemContainer}>
+            <Text style={styles.itemid}>{item.id}</Text>
             <Text style={styles.itemName}>{item.title}</Text>
             <Text style={styles.itemDescription}>{item.description}</Text>
             <Text style={styles.itemPrice}>Price: ${item.price}</Text>
@@ -24,7 +25,13 @@ const styles = StyleSheet.create({
     itemContainer: {
         padding: 16,
         borderBottomWidth: 1,
-        borderBottomColor: '#ccc',
+        borderBottomColor: 'red',
+    
+    },
+    itemid: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'green'
     },
     itemName: {
         fontSize: 20,

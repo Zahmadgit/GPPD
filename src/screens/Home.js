@@ -1,37 +1,27 @@
 import React, { useState } from "react";
-import { View, Button, StyleSheet } from "react-native";
-import { getData } from "../services/ServerApi";
-import ListProducts from "../services/ListProducts";
+import { Button, StyleSheet } from "react-native";
+import ListProducts from "../components/ListProducts";
+import PostForm from "../components/PostForm";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { getDataHelper } from "../helpers/getDataHelper";
 
 const Home = ({ navigation }) => {
     const [itemData, setItemData] = useState([]);
-
-    const fetchData = async () => {
-        try {
-            const itemInfo = await getData();
-            if (itemInfo.success && itemInfo.data) {
-                setItemData(itemInfo.data.list);
-            } else {
-                console.error("No data available");
-            }
-        } catch (e) {
-            console.error(e);
-        }
-    };
-
     return (
-        <View style={styles.container}>
+
+        <SafeAreaView style={styles.container}>
             <Button title="To Account" onPress={() => navigation.navigate('Account')} />
-            <Button title="Fetch Data" onPress={fetchData} />
+            <Button title="Fetch Data" onPress={() => getDataHelper(setItemData)} />
             <ListProducts data={itemData} />
-        </View>
+            <PostForm></PostForm>
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 16,
+        padding: '10%',
     },
 });
 
