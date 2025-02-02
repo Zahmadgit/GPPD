@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { View, Button, StyleSheet } from "react-native";
 import { getData } from "../services/ServerApi";
-import ListProducts from "../services/ListProducts";
+import ListProducts from "../components/ListProducts";
+import PostForm from "../components/PostForm";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 
 const Home = ({ navigation }) => {
     const [itemData, setItemData] = useState([]);
@@ -20,11 +23,13 @@ const Home = ({ navigation }) => {
     };
 
     return (
-        <View style={styles.container}>
+
+        <SafeAreaView style={styles.container}>
             <Button title="To Account" onPress={() => navigation.navigate('Account')} />
             <Button title="Fetch Data" onPress={fetchData} />
             <ListProducts data={itemData} />
-        </View>
+            <PostForm></PostForm>
+        </SafeAreaView>
     );
 };
 
