@@ -1,22 +1,23 @@
 import React from "react";
-import { View, Button, StyleSheet } from "react-native";
+import {Button, StyleSheet, SafeAreaView} from "react-native";
 import DeleteForm from "../components/DeleteForm"
 
 const DeleteScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Button title="To Home" onPress={() => navigation.navigate('Home')} />
       <Button title="To Account" onPress={() => navigation.navigate('Account')} />
       <DeleteForm />
-    </View>
+      </SafeAreaView>
+
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
-  },
+    padding: '10%',
+}
 });
 
 export default DeleteScreen;

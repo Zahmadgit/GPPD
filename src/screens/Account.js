@@ -1,20 +1,24 @@
 import React from "react";
-import { View, Text, Button, StyleSheet} from "react-native";
+import {Button, StyleSheet, SafeAreaView} from "react-native";
 import PutForm from "../components/PutForm";
 
 
 const Account = ({ navigation }) => {
   return (
-    <View>
+    <SafeAreaView style={styles.container}>
          <Button title = "To Home" onPress={() => navigation.navigate('Home')}></Button>
          <Button title = "To DeleteScreen" onPress={() => navigation.navigate('DeleteScreen')}></Button>
         <PutForm></PutForm>
 
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: '10%',
+  },
   text: {
     fontSize: 20,
   },
